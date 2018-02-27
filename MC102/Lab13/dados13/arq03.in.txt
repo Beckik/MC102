@@ -1,7 +1,0 @@
-A = {c, f, h}
-B = {c, f}
-B c A
-A c B
-B += d
-B c A
-Q
