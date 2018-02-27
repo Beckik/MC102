@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<!-- saved from url=(0059)https://susy.ic.unicamp.br:9999/mc102qrst/15/enunciado.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Laboratório 15</title>        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="./Laboratório 15_files/css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="./Laboratório 15_files/github-markdown.css">
+    <style>
+        .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+        font-family: 'Noto Sans', sans-serif;
+        }
+        .markdown-body h6 { margin-bottom: 0; }
+        .markdown-body h6 + ul li {
+        display: inline-block;
+        width: 100%;
+        max-width: 426px;
+        vertical-align: top;
+        }
+        .markdown-body h6 + ul li pre {
+          max-height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <article class="markdown-body">
+<h3>
+<a id="user-content-instituto-de-computação---unicamp" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/15/enunciado.html#instituto-de-computa%C3%A7%C3%A3o---unicamp" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Instituto de Computação - Unicamp</h3>
+<h3>
+<a id="user-content-mc102---algoritmos-e-programação-de-computadores" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/15/enunciado.html#mc102---algoritmos-e-programa%C3%A7%C3%A3o-de-computadores" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MC102 - Algoritmos e Programação de Computadores</h3>
+<h1>
+<a id="user-content-laboratório-id---title" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/15/enunciado.html#laborat%C3%B3rio-id---title" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Laboratório 15 - Brincando com Cordas</h1><p>Prazo de entrega: <strong>26/05/2017 23:59:59</strong></p><p>Peso: <strong>1</strong></p>
+<p><em>Professor:</em> Eduardo C. Xavier<br>
+<em>Professor:</em> Guido Araújo</p>
+<p><em>Monitor:</em> Arthur Pratti Dadalto<br>
+<em>Monitor:</em> Cristina Cavalcante<br>
+<em>Monitor:</em> Klairton de Lima Brito<br>
+<em>Monitor:</em> Luís Felipe Mattos<br>
+<em>Monitor:</em> Paulo Finardi<br>
+<em>Monitor:</em> Paulo Lucas Rodrigues Lacerda<br>
+<em>Monitor:</em> Pedro Alves<br>
+<em>Monitor:</em> Renan Vilas Novas<br>
+<em>Monitor:</em> Vinicius de Novaes Guimarães Pereira</p>
+<hr>
+<h2>
+<a id="user-content-descrição" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/15/enunciado.html#descri%C3%A7%C3%A3o" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Descrição</h2>
+<p>Quatro crianças estão brincando segurando 2 cordas. A cada rodada, elas se posicionam
+formando um quadrado, com as cordas separadas, como mostra a figura abaixo.</p>
+<p><a href="./Laboratório 15_files/exemplo-inicio.png" target="_blank"><img src="./Laboratório 15_files/exemplo-inicio.png" alt="Exemplo" style="max-width:100%;"></a></p>
+<p>Em seguida, elas realizam uma sequência de movimentos, que podem ser dos seguintes tipos:</p>
+<ul>
+<li>
+<p>Movimento '+' (TROCA POR CIMA): A criança que está na posição 1 troca de lugar com a criança
+que está na posição 2, passando sua corda por cima da dela.</p>
+</li>
+<li>
+<p>Movimento '-' (TROCA POR BAIXO): A criança que está na posição 1 troca de lugar com a criança
+que está na posição 2, passando sua corda por baixo da dela.</p>
+</li>
+<li>
+<p>Movimento '*' (GIRO): As crianças giram no sentido horário (quem está na posição 1 vai para
+a 2, quem está na 2 vai para a 3, quem está na 3 vai para 4, e quem está na 4 vai para 1).</p>
+</li>
+</ul>
+<p><a href="./Laboratório 15_files/exemplo.png" target="_blank"><img src="./Laboratório 15_files/exemplo.png" alt="Exemplo" style="max-width:100%;"></a></p>
+<p>Os movimentos podem ser executados em qualquer ordem, e o desafio é saber se, após a
+execução de uma dada sequência de movimentos '+', '-' e '*', as cordas vão terminar
+emaranhadas ou vão estar novamente separadas (paralelas na horizontal ou na vertical).</p>
+<p><a href="./Laboratório 15_files/exemplo-desafio.png" target="_blank"><img src="./Laboratório 15_files/exemplo-desafio.png" alt="Exemplo" style="max-width:100%;"></a></p>
+<p>Neste laboratório, você deve fazer um programa que, dada uma sequência de movimentos '+', '-' e '*',
+consiga prever o estado final das cordas.</p>
+<p>O matemático Jonh Conway, pai desta brincadeira (que em inglês é chamada de <em>rational tangle dance</em>), dá
+as seguintes dicas para você:</p>
+<p>1 - Você deve processar a sequência de movimentos, removendo subsequências que não afetam o resultado:
+"+-", "-+", "**".</p>
+<p>2 - Se a sequêcia de movimentos começa com um GIRO ('*'), qualquer movimento de TROCA subsequente ('+' ou '-')
+não vai emaranhar as cordas até que um outro movimento GIRO seja executado. Sendo assim, se a sequência
+de movimentos começa com '*', você deve remover todos os movimentos da primeira posição da sequência até
+a segunda aparição de '*', inclusive.</p>
+<p>3 - Existem duas subsequências de movimentos que mascaram o resultado. São elas: "+*+" e "-*-". Sempre
+que uma dessas subsequências aparecer, elas devem ser substituídas por "*-*" e "*+*", respectivamente.</p>
+<p>4 - As alterações 1, 2 e 3 devem ser executadas até que a sequência de movimentos não seja mais alterada.
+Se a sequência final obtida for vazia ou igual a "*", as cordas terminarão separadas. Caso contrário, as cordas
+terminarão emaranhadas.</p>
+<p>Para executar as alterações 1, 2 e 3, você deve implementar três funções:</p>
+<ul>
+<li>
+<p><strong>removePadrao:</strong> Remove, de uma dada sequência de movimentos, todas as ocorrências de uma dado padrão
+(subsequência de movimentos).</p>
+</li>
+<li>
+<p><strong>removeBloco:</strong> Se uma dada sequência de movimentos começa com um determinado caractere, remove da sequência
+todos os movimentos da primeira posição até a segunda ocorrência (inclusive) do dado caractere.</p>
+</li>
+<li>
+<p><strong>substituiPadrao:</strong> Substitui, em uma dada sequência de movimentos, todas as ocorrências de um dado padrão,
+por um novo padrão.</p>
+</li>
+</ul>
+<p>As alterações na sequência original devem ser feitas na seguinte ordem:</p>
+<ul>
+<li>removeBloco (alteração tipo 2)</li>
+<li>removePadrao (alteração tipo 1, para os padrões "**", "+-", "-+", nesta ordem).</li>
+<li>substituiPadrao (alteração tipo 3, para os padrões "+*+" e "-*-", nesta ordem).</li>
+</ul>
+<p><strong>OBS: Você deve atentar somente aos padrões existentes na string no momento da busca, novos padrões que possam aparecer ao remover/subtituir um padrão já existente devem ser ignorados.</strong></p>
+<h2>
+<a id="user-content-objetivo" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/15/enunciado.html#objetivo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Objetivo</h2>
+<p>O objetivo deste laboratório é exercitar os conceitos de funções e manipulação de strings,
+através da criação de um programa que consiga prever o estado final de duas cordas (separadas
+ou emaranhadas) após a execução de uma sequência de movimentos '+', '-' e '*'.</p>
+<p>A descrição geral dos parâmetros de entrada e saída das funções estão nos protótipos
+de cada uma delas, fornecidos a seguir:</p>
+<p>Linguagem C:</p>
+<div class="highlight highlight-source-c"><pre><span class="pl-c"><span class="pl-c">/*</span> Laboratorio 15 - Brincando com cordas</span>
+<span class="pl-c"> * Nome:</span>
+<span class="pl-c"> * RA:</span>
+<span class="pl-c"> <span class="pl-c">*/</span></span>
+
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>stdio.h<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>string.h<span class="pl-pds">&gt;</span></span>
+
+<span class="pl-c"><span class="pl-c">/*</span> Funcao: removePadrao</span>
+<span class="pl-c"> *</span>
+<span class="pl-c"> *    Processa linearmente (e uma unica vez) os carateres de uma dada sequencia de movimentos,</span>
+<span class="pl-c"> *    removendo as ocorrencias de um dado padrao.</span>
+<span class="pl-c"> * </span>
+<span class="pl-c"> * Parametros:</span>
+<span class="pl-c"> *          str: sequencia de movimentos '+', '-', '*'</span>
+<span class="pl-c"> *       padrao: subsequencia de movimentos, cujas ocorrencias devem ser removidas</span>
+<span class="pl-c"> *    targetStr: sequencia obtida apos a remocao de str de todas as ocorrencias do dado padrao.</span>
+<span class="pl-c"> *               </span>
+<span class="pl-c"> *  </span>
+<span class="pl-c"> * Retorno:</span>
+<span class="pl-c"> *</span>
+<span class="pl-c"> *    1, se as occorrencias do dado padrao foram removidas</span>
+<span class="pl-c"> *    0, caso contrario</span>
+<span class="pl-c"> *</span>
+<span class="pl-c"> * Exemplo:</span>
+<span class="pl-c"> *</span>
+<span class="pl-c"> *     char seq1[15] = "+-*+-*-*+++";</span>
+<span class="pl-c"> *     char seq2[15];</span>
+<span class="pl-c"> *</span>
+<span class="pl-c"> *     char padrao1[3] = "+-"</span>
+<span class="pl-c"> *     char padrao2[3] = "**"</span>
+<span class="pl-c"> * </span>
+<span class="pl-c"> *     removePadrao(seq1, padrao1, seq2); // seq2 sera "**-*+++"</span>
+<span class="pl-c"> *     removePadrao(seq1, padrao2, seq2); // seq2 sera "+-*+-*-*+++" </span>
+<span class="pl-c"> * </span>
+<span class="pl-c"> <span class="pl-c">*/</span></span>
+<span class="pl-k">int</span> <span class="pl-en">removePadrao</span>(<span class="pl-k">char</span> str[], <span class="pl-k">char</span> padrao[], <span class="pl-k">char</span> targetStr[]) {
+}
+
+<span class="pl-c"><span class="pl-c">/*</span> Funcao: removeBloco</span>
+<span class="pl-c"> *</span>
+<span class="pl-c"> *    Processa linearmente (e uma unica vez) os carateres de uma dada sequencia de movimentos,</span>
+<span class="pl-c"> *    removendo o bloco inicial delimitado pelo dado caractere.</span>
+<span class="pl-c"> * </span>
+<span class="pl-c"> * Parametros:</span>
+<span class="pl-c"> *          str: sequencia de movimentos '+', '-', '*'</span>
+<span class="pl-c"> *            c: caractere delimitador do bloco a ser removido</span>
+<span class="pl-c"> *    targetStr: se str comeca com o caractere do parametro c, targetStr contera a sequencia obtida</span>
+<span class="pl-c"> *               apos a remocao (de str) do bloco de movimentos da primeira posicao de str ate a </span>
+<span class="pl-c"> *               segunda ocorrencia (inclusive) do caractere do parametro c. Se nao exsitir uma segunda </span>
+<span class="pl-c"> *               ocorrencia do caracter do parametro c, targetStr deve conter a sequencia vazia.</span>
+<span class="pl-c"> *</span>
+<span class="pl-c"> * Retorno:</span>
+<span class="pl-c"> *</span>
+<span class="pl-c"> *    1, se o bloco foi removido</span>
+<span class="pl-c"> *    0, caso contrario</span>
+<span class="pl-c"> *</span>
+<span class="pl-c"> * Exemplo:</span>
+<span class="pl-c"> *</span>
+<span class="pl-c"> *     char seq1[15] = "+-*+-*-*+++";</span>
+<span class="pl-c"> *     char seq2[15] = "*+-*+-*-*+++";</span>
+<span class="pl-c"> *     char seq3[15] = "*+-+--+++";</span>
+<span class="pl-c"> *     char seq4[15];</span>
+<span class="pl-c"> * </span>
+<span class="pl-c"> *     removeBloco(seq1, '*', seq4); // seq4 sera "+-*+-*-*+++"</span>
+<span class="pl-c"> *     removeBloco(seq2, '*', seq4); // seq4 sera "+-*-*+++"</span>
+<span class="pl-c"> *     removeBloco(seq3, '*', seq4); // seq4 sera "" (sequencia vazia)</span>
+<span class="pl-c"> * </span>
+<span class="pl-c"> <span class="pl-c">*/</span></span>
+<span class="pl-k">int</span> <span class="pl-en">removeBloco</span>(<span class="pl-k">char</span> str[], <span class="pl-k">char</span> c, <span class="pl-k">char</span> targetStr[]) {
+}
+
+<span class="pl-c"><span class="pl-c">/*</span> Funcao: substituiPadrao</span>
+<span class="pl-c"> *</span>
+<span class="pl-c"> *    Processa linearmente (e uma unica vez) os carateres de uma dada sequencia de movimentos,</span>
+<span class="pl-c"> *    substituindo as ocorrencias de um dado padrao por um novo padrao.</span>
+<span class="pl-c"> *</span>
+<span class="pl-c"> * Parametros:</span>
+<span class="pl-c"> *           str: sequencia de movimentos '+', '-', '*'</span>
+<span class="pl-c"> *        padrao: subsequencia de movimentos, cujas ocorrencias devem ser substituidas pelo novoPadrao</span>
+<span class="pl-c"> *    novoPadrao: subsequencia de movimentos que deve substituir cada ocorrencia do dado padrao</span>
+<span class="pl-c"> *     targetStr: sequencia obtida apos a substituicao em str de todas as ocorrencias do dado padrao </span>
+<span class="pl-c"> *                pelo novoPadrao</span>
+<span class="pl-c"> *</span>
+<span class="pl-c"> *     Voce pode assumir que as subsequencias padrao e novoPadrao tem o mesmo tamanho.</span>
+<span class="pl-c"> *</span>
+<span class="pl-c"> * Retorno:</span>
+<span class="pl-c"> *</span>
+<span class="pl-c"> *    1, se as ocorrencias do dado padrao foram substituidas pelo novoPadrao</span>
+<span class="pl-c"> *    0, caso contrario</span>
+<span class="pl-c"> *</span>
+<span class="pl-c"> * Exemplo:</span>
+<span class="pl-c"> *</span>
+<span class="pl-c"> *     char seq1[15] = "+*+-+*+-*++";</span>
+<span class="pl-c"> *     char seq2[15];</span>
+<span class="pl-c"> *     char seq3[15];</span>
+<span class="pl-c"> *</span>
+<span class="pl-c"> *     char padrao[5] = "+*+"</span>
+<span class="pl-c"> *     char novoPadrao[5] = "*-*"</span>
+<span class="pl-c"> * </span>
+<span class="pl-c"> *     substituiPadrao(seq1, padrao, novoPadrao, seq2); // seq2 sera "*-*-*-*-*++"</span>
+<span class="pl-c"> *     substituiPadrao(seq2, padrao, novoPadrao, seq3);  // seq3 sera "*-*-*-*-*++" </span>
+<span class="pl-c"> * </span>
+<span class="pl-c"> <span class="pl-c">*/</span></span>
+<span class="pl-k">int</span> <span class="pl-en">substituiPadrao</span>(<span class="pl-k">char</span> str[], <span class="pl-k">char</span> padrao[], <span class="pl-k">char</span> novoPadrao[], <span class="pl-k">char</span> targetStr[]) {
+}  </pre></div>
+<h3>
+<a id="user-content-múltiplos-arquivos-e-função-principal" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/15/enunciado.html#m%C3%BAltiplos-arquivos-e-fun%C3%A7%C3%A3o-principal" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Múltiplos Arquivos e Função Principal</h3>
+<p>Neste laboratório vamos utilizar o conceito de dividir o
+código em múltiplos arquivos. Quando se implementa programas
+grandes é comum separar o código em vários arquivos com a
+extensão .c, onde cada arquivo implementa um conjunto de
+funções relacionadas entre si.  Isto facilita a manutenção e
+a leitura do código. Para compilar um código organizado
+dessa forma, basta passar todos os arquivos na linha de
+comando para o compilador.</p>
+<p>Para esse laboratório você só deverá implementar as funções descritas acima. A função principal (<strong>main</strong>) será fornecida em um arquivo separado, chamado <a href="https://susy.ic.unicamp.br:9999/mc102qrst/15/aux/lab15_main.c"><code>lab15_main.c</code></a>.<br>Um link para ele também está disponível na página da tarefa.</p>
+<p>Vamos ao exemplo de como compilar o seu programa em C. Até agora, a forma que utilizamos (de forma simplificada) era a seguinte:</p>
+<pre><code>gcc -o labXX labXX.c
+</code></pre>
+<p>Nesse laboratório, no entanto, para compilar o seu programa basta adicionar o arquivo extra que provemos (lab15_main.c) ao final da linha de comando, como no exemplo a seguir:</p><pre><code>gcc -o lab15 lab15.c lab15_main.c</code></pre>
+<p><strong>OBS:</strong> A linha completa de compilação para esse laboratório  pode ser vista na sessão de <a href="https://susy.ic.unicamp.br:9999/mc102qrst/15/enunciado.html#observa%C3%A7%C3%B5es">Observações</a>.</p>
+<h2>
+<a id="user-content-entrada" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/15/enunciado.html#entrada" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Entrada</h2>
+<p>O programa recebe como entrada uma sequência de até 30 movimentos '+', '-' e '*'.</p>
+<p><strong><em>Dica para a linguagem C:</em></strong></p>
+<p>Leia a entrada com <em>fgets</em> e remova o '\n' do final da string de entrada da seguinte forma:</p>
+<div class="highlight highlight-source-c"><pre><span class="pl-en">fgets</span>(seq, <span class="pl-c1">30</span>, stdin);
+seq[strlen(seq)-<span class="pl-c1">1</span>] = <span class="pl-s"><span class="pl-pds">'</span><span class="pl-cce">\0</span><span class="pl-pds">'</span></span>;</pre></div>
+<h2>
+<a id="user-content-saída" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/15/enunciado.html#sa%C3%ADda" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Saída</h2>
+<p>Para cada alteração (realmente feita) na sequência de movimentos de entrada, o programa deve imprimir a alteração feita e
+nova sequência obtida. Quando a sequência não for mais alterada, se ela indicar que as cordas estão
+separadas, o programa deve imprimir "Cordas terminam separadas!"; caso contrário, o programa deve imprimir
+"Cordas terminam emaranhadas!"</p>
+<p><strong><em>Dicas para a linguagem C:</em></strong></p>
+<p>Para alterações feitas com a função <strong>removeBloco</strong>, imprima o resultado da seguinte forma, onde <em>novaSeq</em>
+é a sequência obtida com a alteração:</p>
+<div class="highlight highlight-source-c"><pre><span class="pl-en">printf</span>(<span class="pl-s"><span class="pl-pds">"</span>removeBloco(*): <span class="pl-c1">%s</span><span class="pl-cce">\n</span><span class="pl-pds">"</span></span>, novaSeq);</pre></div>
+<p>Para alterações feitas com a função <strong>removePadrao</strong>, imprima o resultado da seguinte forma, onde <em>padrao</em>
+é o padrão removido e <em>novaSeq</em> é a sequência obtida com a alteração:</p>
+<div class="highlight highlight-source-c"><pre><span class="pl-en">printf</span>(<span class="pl-s"><span class="pl-pds">"</span>removePadrao(<span class="pl-c1">%s</span>): <span class="pl-c1">%s</span><span class="pl-cce">\n</span><span class="pl-pds">"</span></span>, padrao, novaSeq);</pre></div>
+<p>Para alterações feitas com a função <strong>substituiPadrao</strong>, imprima o resultado da seguinte forma, onde <em>padrao</em>
+é o padrão substituído por <em>novoPadrao</em>, e <em>novaSeq</em> é a sequência obtida com a alteração:</p>
+<div class="highlight highlight-source-c"><pre><span class="pl-en">printf</span>(<span class="pl-s"><span class="pl-pds">"</span>substituiPadrao(<span class="pl-c1">%s</span>, <span class="pl-c1">%s</span>): <span class="pl-c1">%s</span><span class="pl-cce">\n</span><span class="pl-pds">"</span></span>, padrao, novoPadrao, novaSeq);</pre></div>
+<p>Imprima a conclusão sobre os estado final das cordas da seguinte forma:</p>
+<div class="highlight highlight-source-c"><pre><span class="pl-en">printf</span>(<span class="pl-s"><span class="pl-pds">"</span>Cordas terminam separadas!<span class="pl-cce">\n</span><span class="pl-pds">"</span></span>); <span class="pl-c"><span class="pl-c">//</span> Se as cordas terminarem separadas.</span>
+<span class="pl-en">printf</span>(<span class="pl-s"><span class="pl-pds">"</span>Cordas terminam emaranhadas!<span class="pl-cce">\n</span><span class="pl-pds">"</span></span>); <span class="pl-c"><span class="pl-c">//</span> Se as cordas terminarem emaranhadas.</span></pre></div>
+<h2>
+<a id="user-content-reforçando" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/15/enunciado.html#refor%C3%A7ando" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Reforçando</h2>
+<p>Neste laboratório você não precisará se preocupar em ler a
+entrada a partir da entrada padrão, nem em escrever a saída.
+Seu trabalho é apenas implementar as funções descritas. A
+função <code>main()</code> que é fornecida no arquivo <code>lab15_main.c</code>se encarrega dessa parte.</p>
+<p>Você também <strong>não deve</strong> submeter o arquivo <code>lab15_main.c</code>para o <em>SuSy</em>, somente o arquivo <code>lab15.c</code>.</p><p>Também está disponível um protótipo do arquivo que você deve submeter ao <em>SuSy</em> (lab15.c). Esse arquivo e o arquivo auxiliar (lab15_main.c) também podem ser encontrados na página da tarefa:</p><ul>
+<li><a href="https://susy.ic.unicamp.br:9999/mc102qrst/15/aux/lab15.c"><code>lab15.c</code></a></li><li><a href="https://susy.ic.unicamp.br:9999/mc102qrst/15/aux/lab15_main.c"><code>lab15_main.c</code></a></li></ul>
+<p>As sessões abaixo, de <a href="https://susy.ic.unicamp.br:9999/mc102qrst/15/enunciado.html#entrada">Entrada</a> e <a href="https://susy.ic.unicamp.br:9999/mc102qrst/15/enunciado.html#sa%C3%ADda">Saída</a>,
+descrevem os formatos de entrada e saída, mas você
+não precisa se preocupar com eles.</p>
+<h2>
+<a id="user-content-exemplos" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/15/enunciado.html#exemplos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Exemplos</h2>
+<h3>
+<a id="user-content-teste-01" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/15/enunciado.html#teste-01" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Teste 01</h3>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102qrst/15/dados/arq01.in">Entrada</a></p>
+<pre><code>+
+</code></pre>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102qrst/15/dados/arq01.res">Saída</a></p>
+<pre><code>Cordas terminam emaranhadas!
+</code></pre>
+<h3>
+<a id="user-content-teste-02" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/15/enunciado.html#teste-02" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Teste 02</h3>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102qrst/15/dados/arq02.in">Entrada</a></p>
+<pre><code>*
+</code></pre>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102qrst/15/dados/arq02.res">Saída</a></p>
+<pre><code>removeBloco(*): 
+Cordas terminam separadas!
+</code></pre>
+<h3>
+<a id="user-content-teste-03" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/15/enunciado.html#teste-03" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Teste 03</h3>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102qrst/15/dados/arq03.in">Entrada</a></p>
+<pre><code>+**-
+</code></pre>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102qrst/15/dados/arq03.res">Saída</a></p>
+<pre><code>removePadrao(**): +-
+removePadrao(+-): 
+Cordas terminam separadas!
+</code></pre>
+<h3>
+<a id="user-content-teste-06" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/15/enunciado.html#teste-06" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Teste 06</h3>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102qrst/15/dados/arq06.in">Entrada</a></p>
+<pre><code>+*+
+</code></pre>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102qrst/15/dados/arq06.res">Saída</a></p>
+<pre><code>substituiPadrao(+*+, *-*): *-*
+removeBloco(*): 
+Cordas terminam separadas!
+</code></pre>
+<h3>
+<a id="user-content-teste-07" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/15/enunciado.html#teste-07" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Teste 07</h3>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102qrst/15/dados/arq07.in">Entrada</a></p>
+<pre><code>+-++*+
+</code></pre>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102qrst/15/dados/arq07.res">Saída</a></p>
+<pre><code>removePadrao(+-): ++*+
+substituiPadrao(+*+, *-*): +*-*
+Cordas terminam emaranhadas!
+</code></pre>
+<h3>
+<a id="user-content-teste-08" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/15/enunciado.html#teste-08" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Teste 08</h3>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102qrst/15/dados/arq08.in">Entrada</a></p>
+<pre><code>*++++++
+</code></pre>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102qrst/15/dados/arq08.res">Saída</a></p>
+<pre><code>removeBloco(*): 
+Cordas terminam separadas!
+</code></pre>
+<p>Para mais exemplos, consulte os
+<a href="https://susy.ic.unicamp.br:9999/mc102qrst/15/dados/testes.html">testes abertos no SuSy</a>.</p>
+<h2>
+<a id="user-content-observações" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/15/enunciado.html#observa%C3%A7%C3%B5es" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Observações</h2>
+<ul>
+<li>Você <strong>não deve</strong> submeter o arquivo <code>lab15_main.c</code> para o <em>SuSy</em>, somente o arquivo <code>lab15.c</code>.</li><li>O número máximo de submissões é <strong>15</strong>.</li><li>Para a realização dos testes do SuSy, a compilação dos programas desenvolvidos em C irá considerar o comando:<br>
+<code>gcc -std=c99 -pedantic -Wall -o lab15 lab15.c lab15_main.c</code>.</li><li>Você deve incluir, no início do seu programa, uma breve descrição dos objetivos do programa, da entrada e da saída, além do seu nome e do seu RA.</li>
+<li>Indente corretamente o seu código e inclua comentários no decorrer do seu programa.</li>
+</ul>
+<h2>
+<a id="user-content-critérios-importantes" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/15/enunciado.html#crit%C3%A9rios-importantes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Critérios importantes</h2>
+<p>Independentemente dos resultados dos testes do <em>SuSy</em>, o não
+cumprimento dos critérios abaixo implicará em nota zero
+nesta tarefa de laboratório.</p>
+<ul>
+<li>Os únicos headers aceitos para essa tarefa são <code>stdio.h</code> e <code>string.h</code>.</li>
+</ul>
+
+    </article>
+
+
+</body></html>

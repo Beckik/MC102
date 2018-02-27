@@ -1,0 +1,3 @@
+inDeCISAo PITaR ExcREsCenciA MeRitORio PaTinHAgem InDeCISao
+inDeCISAo PITaR ExcREsCenciA VoVozinHA PaTinHAgem InDeCISao
+inDeCISAo RaTIP ExcREsCenciA VoVozinHA PaTinHAgem InDeCISao

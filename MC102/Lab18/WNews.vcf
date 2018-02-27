@@ -1,0 +1,11 @@
+BEGIN:VCARD
+VERSION;TYPE=WORK:3.0
+FN;CHARSET=UTF-8:weme
+N;CHARSET=UTF-8:weme;;;;
+PROFILE:VCARD
+ADR;CHARSET=UTF-8:;;Av. Dr. Jesuíno Marcondes Machado\, 630;Campinas;SP;13
+ 076-670;Brazil
+EMAIL:info@weme.nu
+ORG;CHARSET=UTF-8:weme
+URL:http://www.weme.nu
+END:VCARD

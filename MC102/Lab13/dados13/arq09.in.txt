@@ -1,0 +1,9 @@
+A = {b, b, c, d, f, i}
+B = {}
+b e A
+b e B
+a e A
+j e A
+f e A
+i e A
+Q

@@ -1,0 +1,3 @@
+/home/beckik/Documents/MC102/Lab18/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/beckik/Documents/MC102/Lab18/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/beckik/Documents/MC102/Lab18/cmake-build-debug/CMakeFiles/Lab18.dir

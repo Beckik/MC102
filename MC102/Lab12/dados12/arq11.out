@@ -1,0 +1,8 @@
+adulTeRo sidERaL siDeRAL TUBerCUloso ciRURGICo sImieSCO SImiesCo cOeNTrO ORIEnTaR dISPeNDIoSo
+adulTeRo sidERaL siDeRAL TUBerCUloso ciRURGICo sImieSCO SImiesCo cOeNTrO pulveriZado dISPeNDIoSo
+adulTeRo sidERaL siDeRAL TUBerCUloso ciRURGICo ocIDEnTALIzADO ocIDEnTALIzADO cOeNTrO pulveriZado dISPeNDIoSo
+adulTeRo sidERaL siDeRAL osolUCreBUT ciRURGICo ocIDEnTALIzADO ocIDEnTALIzADO cOeNTrO pulveriZado dISPeNDIoSo
+adulTeRo LaREdis LAReDis osolUCreBUT ciRURGICo ocIDEnTALIzADO ocIDEnTALIzADO cOeNTrO pulveriZado dISPeNDIoSo
+adulTeRo LaREdis LAReDis osolUCreBUT ciRURGICo ocIDEnTALIzADO ocIDEnTALIzADO cOeNTrO pulveriZado gratuitO
+oReTluda LaREdis LAReDis osolUCreBUT ciRURGICo ocIDEnTALIzADO ocIDEnTALIzADO cOeNTrO pulveriZado gratuitO
+adulTeRo LaREdis LAReDis osolUCreBUT ciRURGICo ocIDEnTALIzADO ocIDEnTALIzADO cOeNTrO pulveriZado gratuitO

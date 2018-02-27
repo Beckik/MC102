@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/Lab18.dir/lab18.c.o  -o Lab18 

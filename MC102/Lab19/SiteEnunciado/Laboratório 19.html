@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<!-- saved from url=(0059)https://susy.ic.unicamp.br:9999/mc102qrst/19/enunciado.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Laboratório 19</title>        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="./Laboratório 19_files/css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="./Laboratório 19_files/github-markdown.css">
+    <style>
+        .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+        font-family: 'Noto Sans', sans-serif;
+        }
+        .markdown-body h6 { margin-bottom: 0; }
+        .markdown-body h6 + ul li {
+        display: inline-block;
+        width: 100%;
+        max-width: 426px;
+        vertical-align: top;
+        }
+        .markdown-body h6 + ul li pre {
+          max-height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <article class="markdown-body">
+<h3>
+<a id="user-content-instituto-de-computação---unicamp" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/19/enunciado.html#instituto-de-computa%C3%A7%C3%A3o---unicamp" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Instituto de Computação - Unicamp</h3>
+<h3>
+<a id="user-content-mc102---algoritmos-e-programação-de-computadores" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/19/enunciado.html#mc102---algoritmos-e-programa%C3%A7%C3%A3o-de-computadores" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MC102 - Algoritmos e Programação de Computadores</h3>
+<h1>
+<a id="user-content-laboratório-id---title" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/19/enunciado.html#laborat%C3%B3rio-id---title" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Laboratório 19 - Todos os Livros do Mundo</h1><p>Prazo de entrega: <strong>23/06/2017 23:59:59</strong></p><p>Peso: <strong>2</strong></p>
+<p><em>Professor:</em> Eduardo C. Xavier<br>
+<em>Professor:</em> Guido Araújo</p>
+<p><em>Monitor:</em> Arthur Pratti Dadalto<br>
+<em>Monitor:</em> Cristina Cavalcante<br>
+<em>Monitor:</em> Klairton de Lima Brito<br>
+<em>Monitor:</em> Luís Felipe Mattos<br>
+<em>Monitor:</em> Paulo Finardi<br>
+<em>Monitor:</em> Paulo Lucas Rodrigues Lacerda<br>
+<em>Monitor:</em> Pedro Alves<br>
+<em>Monitor:</em> Renan Vilas Novas<br>
+<em>Monitor:</em> Vinicius de Novaes Guimarães Pereira</p>
+<hr>
+<h2>
+<a id="user-content-descrição" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/19/enunciado.html#descri%C3%A7%C3%A3o" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Descrição</h2>
+<p>Dado um limite máximo de páginas, é possível criar um algoritmo para gerar todos os livros já escritos e ainda por serem escritos neste mundo, desde clássicos de Machado de Assis até as novelas populares. A ideia do algoritmo é gerar todas as combinações de letras possíveis incluindo espaços. Obviamente o número de combinações é astronômico. Se por exemplo usarmos 50 possíveis caracteres, incluindo letras com acentos, pontuação e espaço, e num livro tivermos espaço para 500000 caracteres teremos 50^(500000) possíveis livros.</p>
+<p>O nosso objetivo neste laboratório é mais modesto, consistindo em gerar
+todos os anagramas de uma palavra. Um anagrama de uma palavra é uma permutação das suas letras afim de formar uma outra palavra.
+Por exemplo, <i>ator</i> é um anagrama da palavra <i>rota</i>.</p>
+<p>Note porém que não basta gerar todas as permutações possíveis das letras
+de uma palavra. Se gerassemos todas as permutações de <i>asa</i> obteríamos</p>
+<pre><code>aas
+aas
+asa
+asa
+saa
+saa
+</code></pre>
+<p>pois repetiríamos as permutaçoes das duas letras a's.
+Mas os anagramas da palavra <i>asa</i> são apenas <i>aas</i>, <i>asa</i> e <i>saa</i>, em ordem alfabética.</p>
+<p>Neste laboratório você deve fazer um programa que usa uma função recursiva que gera todos os anagramas de uma palavra dada na entrada.</p>
+<p>Uma maneira de se resolver este problema é recursivamente ir montando um anagrama. Inicialmente ordenamos a palavra de entrada, por exemplo, para <code>asa</code> temos <code>aas</code>. Agora de forma recursiva vamos montar os anagramas. A cada chamada recursiva temos um anagrama em formação que salvamos em <em>word</em>, e um indicador de quais letras já foram usadas. Na chamada recursiva atual devemos incluir cada uma das letras ainda não usadas no final de <em>word</em>, e para cada uma destas inclusões marcar a letra como usada e chamar recursivamente a função para posicionar a próxima letra. Um detalhe importante para não gerar palavras repetidas é que as letras a serem incluídas no final de word numa chamada recursiva atual devem ser distintas. Como exemplo do processo veja a figura abaixo.
+Na parte de cima de cada nó temos as letras usadas/livres e embaixo a palavra <em>word</em> em formação.</p>
+<p><a href="./Laboratório 19_files/graphModelOriginalcopy.png" target="_blank"><img src="./Laboratório 19_files/graphModelOriginalcopy.png" alt="Árvore de recursão 1" style="max-width:100%;"></a></p>
+<p>Considere cada nó da árvore de recursão:</p>
+<ul>
+<li>1: Inicialmente temos as letras ordenadas e <em>word</em> vazia.</li>
+<li>2: Incluímos a letra <code>A</code> em <em>word</em> e a marcamos como usada.</li>
+<li>3: Incluímos a próxima letra livre em <em>word</em>, que também é <code>A</code>, e marcamos ela como usada.</li>
+<li>4: Incluímos a próxima letra em <em>word</em>, e como foram usadas todas as letras, temos um anagrama que deve ser impresso.</li>
+<li>Note que ao voltar para 3, não temos mais letras sobrando (só havia o <code>S</code>)  e portanto voltamos para 2.</li>
+<li>5: Incluímos a próxima letra distinta, <code>S</code> em <em>word</em> marcando ela como usada.</li>
+<li>6: Incluímos a letra <code>A</code>, e como usamos todas as letras, imprimimos um novo anagrama.</li>
+<li>Note que ao voltar para 5 não há mais letras livres (só havia o <code>A</code>) e voltamos para 2. Em 2, também não temos mais letras livres (já foram posicionadas o <code>A</code> e o <code>S</code>) portanto voltamos para 1.</li>
+<li>7: Em 1, escolhemos a próxima letra livre distinta da anterior (<code>A</code> foi usada para ir para 2), portanto incluímos o <code>S</code> em <em>word</em> e a marcamos como usada.</li>
+<li>8: Incluímos a letra <code>A</code> em <em>word</em> e a marcamos como usada.</li>
+<li>9: Incluímos o <code>A</code> em <em>word</em>, usando todas as letras e portanto imprimimos mais um anagrama.</li>
+<li>Ao voltar para 8, não há outra letra livre e voltamos para 7. Em 7 não há uma outra letra distinta de <code>A</code> livre, portanto voltamos para 1, e não havendo mais letras livres encerramos o processo.</li>
+</ul>
+<p>Use os códigos auxiliares abaixo para guiar a sua função que se chamrá <em>generate</em>.
+Linguagem C:</p>
+<div class="highlight highlight-source-c"><pre>#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>stdio.h<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>stdlib.h<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>string.h<span class="pl-pds">&gt;</span></span>
+
+
+<span class="pl-c"><span class="pl-c">/*</span></span>
+<span class="pl-c"> * Entrada: </span>
+<span class="pl-c"> *          string_ordenada: a string original, que devemos processar </span>
+<span class="pl-c"> *                           para encontrarmos todos os anagramas</span>
+<span class="pl-c"> *          letra_usada: um vetor de booleanos (implementado da forma </span>
+<span class="pl-c"> *                       de um vetor de inteiros) para marcarmos quais </span>
+<span class="pl-c"> *                       posições da string original já foram usadas</span>
+<span class="pl-c"> *          word: o anagrama que estamos formando</span>
+<span class="pl-c"> *          n: o numero de letras do anagrama</span>
+<span class="pl-c"> *          k: a posição onde incluiremos a proxima letra em word</span>
+<span class="pl-c"> * </span>
+<span class="pl-c"> * A ideia para gerar sem repeticoes eh que setada a letra da posicao k,</span>
+<span class="pl-c"> * e retornado da chamada recursiva, temos</span>
+<span class="pl-c"> * que colocar uma letra diferente na posição k, pois senão geraríamos</span>
+<span class="pl-c"> * as repetições. Quando n==k incluimos a letra faltante e imprimimos o</span>
+<span class="pl-c"> * anagrama.</span>
+<span class="pl-c"> <span class="pl-c">*/</span></span>
+<span class="pl-k">void</span> <span class="pl-en">generate</span>(<span class="pl-k">char</span> *string_ordenada, <span class="pl-k">int</span> *letra_usada, <span class="pl-k">char</span> *word, <span class="pl-k">int</span> n, <span class="pl-k">int</span> k){
+  <span class="pl-c1">printf</span>(<span class="pl-s"><span class="pl-pds">"</span><span class="pl-c1">%s</span><span class="pl-cce">\n</span><span class="pl-pds">"</span></span>,word);
+  <span class="pl-k">return</span>;
+}
+
+
+<span class="pl-k">char</span> * <span class="pl-en">sort</span>(<span class="pl-k">char</span> string[]);
+
+<span class="pl-k">int</span> <span class="pl-en">main</span>(){
+
+  <span class="pl-k">char</span> *string_inicial;
+  <span class="pl-c1">scanf</span>(<span class="pl-s"><span class="pl-pds">"</span>%ms<span class="pl-pds">"</span></span>, &amp;string_inicial);
+  <span class="pl-k">char</span> *string_ordenada =  <span class="pl-c1">sort</span>(string_inicial);
+  <span class="pl-k">int</span> n  = <span class="pl-c1">strlen</span>(string_ordenada);  
+  <span class="pl-k">int</span> *letra_usada = <span class="pl-c1">malloc</span>(n*<span class="pl-k">sizeof</span>(<span class="pl-k">int</span>));
+  <span class="pl-k">char</span> *anagrama = <span class="pl-c1">malloc</span>((n+<span class="pl-c1">1</span>)*<span class="pl-k">sizeof</span>(<span class="pl-k">char</span>));
+
+  <span class="pl-k">int</span> i=<span class="pl-c1">0</span>;
+  <span class="pl-k">for</span>(i=<span class="pl-c1">0</span>; i&lt;n; i++)
+    letra_usada[i]=<span class="pl-c1">0</span>;
+  <span class="pl-c1">generate</span>(string_ordenada, letra_usada, anagrama, n, <span class="pl-c1">0</span>);
+
+  <span class="pl-c1">free</span>(anagrama);
+  <span class="pl-c1">free</span>(string_ordenada);
+  <span class="pl-c1">free</span>(letra_usada);
+}
+
+<span class="pl-k">char</span> * <span class="pl-en">sort</span>(<span class="pl-k">char</span> string[]){
+  <span class="pl-k">int</span> count[<span class="pl-c1">256</span>], i;
+  <span class="pl-k">char</span> *sr;
+
+  <span class="pl-k">for</span>(i=<span class="pl-c1">0</span>; i&lt;<span class="pl-c1">256</span>; i++)
+    count[i] = <span class="pl-c1">0</span>;
+  
+  i=<span class="pl-c1">0</span>;
+  <span class="pl-k">while</span>(string[i] != <span class="pl-s"><span class="pl-pds">'</span><span class="pl-cce">\0</span><span class="pl-pds">'</span></span>){
+    count[(<span class="pl-k">int</span>)string[i]]++;
+    i++;
+  }
+  
+  sr = <span class="pl-c1">malloc</span>((i+<span class="pl-c1">1</span>)*<span class="pl-k">sizeof</span>(<span class="pl-k">char</span>));
+  
+  <span class="pl-k">int</span> j=<span class="pl-c1">0</span>, k=<span class="pl-c1">0</span>;
+  <span class="pl-k">for</span>(i=<span class="pl-c1">0</span>; i&lt;<span class="pl-c1">256</span>; i++){
+    <span class="pl-k">if</span>(count[i]!=<span class="pl-c1">0</span>){
+      <span class="pl-k">for</span>(k=<span class="pl-c1">0</span>; k&lt;count[i]; k++){
+	sr[j] = i;
+	j++;
+      }
+    }
+  }
+  sr[j] = <span class="pl-s"><span class="pl-pds">'</span><span class="pl-cce">\0</span><span class="pl-pds">'</span></span>;
+  <span class="pl-k">return</span> sr;
+}
+</pre></div>
+<p>Linguagem C:</p>
+<div class="highlight highlight-source-c"><pre>#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>stdio.h<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>stdlib.h<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>string.h<span class="pl-pds">&gt;</span></span>
+
+<span class="pl-c"><span class="pl-c">/*</span></span>
+<span class="pl-c"> * Entrada: </span>
+<span class="pl-c"> *          string_ordenada: a string original, que devemos processar </span>
+<span class="pl-c"> *                           para encontrarmos todos os anagramas</span>
+<span class="pl-c"> *          letra_usada: um vetor de booleanos (implementado da forma </span>
+<span class="pl-c"> *                       de um vetor de inteiros) para marcarmos quais </span>
+<span class="pl-c"> *                       posições da string original já foram usadas</span>
+<span class="pl-c"> *          word: o anagrama que estamos formando</span>
+<span class="pl-c"> *          n: o numero de letras do anagrama</span>
+<span class="pl-c"> *          k: a posição onde incluiremos a proxima letra em word</span>
+<span class="pl-c"> * </span>
+<span class="pl-c"> * A ideia para gerar sem repeticoes eh que setada a letra da posicao k,</span>
+<span class="pl-c"> * e retornado da chamada recursiva, temos</span>
+<span class="pl-c"> * que colocar uma letra diferente na posição k, pois senão geraríamos</span>
+<span class="pl-c"> * as repetições. Quando n==k incluimos a letra faltante e imprimimos o</span>
+<span class="pl-c"> * anagrama.</span>
+<span class="pl-c"> <span class="pl-c">*/</span></span>
+<span class="pl-k">void</span> <span class="pl-en">generate</span>(<span class="pl-k">char</span> *string_ordenada, <span class="pl-k">int</span> *letra_usada, <span class="pl-k">char</span> *word, <span class="pl-k">int</span> n, <span class="pl-k">int</span> k){
+  <span class="pl-c1">printf</span>(<span class="pl-s"><span class="pl-pds">"</span><span class="pl-c1">%s</span><span class="pl-cce">\n</span><span class="pl-pds">"</span></span>,word);
+  <span class="pl-k">return</span>;
+}</pre></div>
+<h2>
+<a id="user-content-objetivo" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/19/enunciado.html#objetivo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Objetivo</h2>
+<p>O seu objetivo é fazer um programa com uma função recursiva que imprime todos os anagramas de uma palavra em ordem alfabética.</p>
+<p>Você também não deve submeter o arquivo <code>lab19_main.c</code> para o SuSy, <strong>somente o arquivo</strong> <code>lab19.c</code>.</p>
+<h2>
+<a id="user-content-entrada" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/19/enunciado.html#entrada" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Entrada</h2>
+<p>A entrada consiste em uma palavra composta apenas de, no máximo, 10 letras do alfabeto português, sem acento.</p>
+<h2>
+<a id="user-content-saída" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/19/enunciado.html#sa%C3%ADda" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Saída</h2>
+<p>Como saída o seu programa deverá imprimir todos os anagramas da palavra em ordem alfabética.</p>
+<h2>
+<a id="user-content-exemplos" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/19/enunciado.html#exemplos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Exemplos</h2>
+<h3>
+<a id="user-content-teste-01" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/19/enunciado.html#teste-01" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Teste 01</h3>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102qrst/19/dados/arq01.in">Entrada</a></p>
+<pre><code>oi
+</code></pre>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102qrst/19/dados/arq01.res">Saída</a></p>
+<pre><code>io
+oi
+</code></pre>
+<h3>
+<a id="user-content-teste-02" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/19/enunciado.html#teste-02" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Teste 02</h3>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102qrst/19/dados/arq02.in">Entrada</a></p>
+<pre><code>ave
+</code></pre>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102qrst/19/dados/arq02.res">Saída</a></p>
+<pre><code>aev
+ave
+eav
+eva
+vae
+vea
+</code></pre>
+<h3>
+<a id="user-content-teste-03" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/19/enunciado.html#teste-03" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Teste 03</h3>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102qrst/19/dados/arq03.in">Entrada</a></p>
+<pre><code>asa
+</code></pre>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102qrst/19/dados/arq03.res">Saída</a></p>
+<pre><code>aas
+asa
+saa
+</code></pre>
+<p>Para mais exemplos, consulte os
+<a href="https://susy.ic.unicamp.br:9999/mc102qrst/19/dados/testes.html">testes abertos no Susy</a>.</p>
+<h2>
+<a id="user-content-observações" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/19/enunciado.html#observa%C3%A7%C3%B5es" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Observações</h2>
+<ul>
+<li>O número máximo de submissões é <strong>15</strong>;</li><li>O seu programa deve estar completamente contido em um único arquivo denominado <code>lab19.c</code>;</li><li>Para a realização dos testes do SuSy, a compilação dos programas desenvolvidos considerar o comando:__
+<code>gcc -std=c99 -pedantic -Wall -o lab19 lab19.c</code>;</li><li>Você deve incluir, no início do seu programa, uma breve descrição dos objetivos do programa, da entrada e da saída, além do seu nome e do seu RA;</li>
+<li>Indente corretamente o seu código e inclua comentários no decorrer do seu programa.</li>
+</ul>
+<h2>
+<a id="user-content-critérios-importantes" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/19/enunciado.html#crit%C3%A9rios-importantes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Critérios importantes</h2>
+<p>Independentemente dos resultados dos testes do SuSy, o não cumprimento dos critérios abaixo implicará em nota zero nesta tarefa de laboratório.</p>
+<ul>
+<li>Os únicos headers aceitos para esta tarefa são os <code>stdio.h</code> <code>stdlib.h</code> e o <code>string.h</code>.</li>
+</ul>
+
+    </article>
+
+
+</body></html>

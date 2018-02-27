@@ -1,0 +1,2 @@
+SiMbolIco ExpLoSIvo bErLinENsE seMBlAntE bERlIneNSE aRRUDa aPATeTAR cONsTrAngedor metrAlHADoRa cOlAPSO reTALho chISPa PeRIOdICa cHUVIsCo SoCioLOGIa RETalho PimENtAO poNTos CLiMATIZaCaO DaDo apateTAR PerMissibILIdAdE suplementaCAo ApAtetAr
+SiMbolIco ExpLoSIvo bErLinENsE seMBlAntE bERlIneNSE aRRUDa aPATeTAR cONsTrAngedor metrAlHADoRa cOlAPSO gabAr chISPa PeRIOdICa cHUVIsCo SoCioLOGIa gabAr PimENtAO poNTos CLiMATIZaCaO DaDo apateTAR PerMissibILIdAdE suplementaCAo ApAtetAr

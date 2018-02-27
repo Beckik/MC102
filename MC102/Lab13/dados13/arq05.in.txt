@@ -1,0 +1,7 @@
+A = {c, f, h}
+B = {c, d, e}
+A u B
+A = {b, c}
+B = {c, b}
+A u B
+Q

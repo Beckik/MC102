@@ -1,0 +1,39 @@
+A
+B
+A c B
+B c A
+A = {b, c, d}
+B = {e, d, c}
+A c B
+B c A
+b e A
+b e B
+e e A
+e e B
+A += a
+B += b
+A -= d
+B -= e
+A += b
+B += c
+A -= e
+B -= f
+A u B
+B u A
+A ^ B
+B ^ A
+A \ B
+B \ A
+-A
+-B
+A -= b
+A c B
+A -= a
+A c B
+B = {}
+B c A
+A c B
+A -= c
+A c B
+B c A
+Q
