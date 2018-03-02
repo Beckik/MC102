@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<!-- saved from url=(0059)https://susy.ic.unicamp.br:9999/mc102qrst/07/enunciado.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Laboratório 07</title>        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="./Laboratório 07_files/css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="./Laboratório 07_files/github-markdown.css">
+    <style>
+        .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+        font-family: 'Noto Sans', sans-serif;
+        }
+        .markdown-body h6 { margin-bottom: 0; }
+        .markdown-body h6 + ul li {
+        display: inline-block;
+        width: 100%;
+        max-width: 426px;
+        vertical-align: top;
+        }
+        .markdown-body h6 + ul li pre {
+          max-height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <article class="markdown-body">
+<h3>
+<a id="user-content-instituto-de-computação---unicamp" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/07/enunciado.html#instituto-de-computa%C3%A7%C3%A3o---unicamp" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Instituto de Computação - Unicamp</h3>
+
+<h3>
+<a id="user-content-mc102---algoritmos-e-programação-de-computadores" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/07/enunciado.html#mc102---algoritmos-e-programa%C3%A7%C3%A3o-de-computadores" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MC102 - Algoritmos e Programação de Computadores</h3>
+
+<h1>
+<a id="user-content-laboratório-id---title" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/07/enunciado.html#laborat%C3%B3rio-id---title" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Laboratório 07 - Ternos Pitagóricos</h1>
+<p>Prazo de entrega: <strong>14/04/2017 23:59:59</strong></p>
+<p>Peso: <strong>1</strong></p>
+
+<p><em>Professor:</em> Eduardo C. Xavier<br>
+<em>Professor:</em> Guido Araújo  </p>
+
+<p><em>Monitor:</em> Arthur Pratti Dadalto<br>
+<em>Monitor:</em> Cristina Cavalcante<br>
+<em>Monitor:</em> Klairton de Lima Brito<br>
+<em>Monitor:</em> Luís Felipe Mattos<br>
+<em>Monitor:</em> Paulo Finardi<br>
+<em>Monitor:</em> Paulo Lucas Rodrigues Lacerda<br>
+<em>Monitor:</em> Pedro Alves<br>
+<em>Monitor:</em> Renan Vilas Novas<br>
+<em>Monitor:</em> Vinicius de Novaes Guimarães Pereira  </p>
+
+<hr>
+
+<h2>
+<a id="user-content-descrição" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/07/enunciado.html#descri%C3%A7%C3%A3o" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Descrição</h2>
+
+<p>Terno pitagórico é o nome dado a uma sequência de três números 
+inteiros a, b e c que satisfazem a equação 'a²+b²=c²'. O nome 
+<em>Pitagórico</em> é uma clara referência ao Teorema de Pitágoras que 
+diz que, em todo triângulo retângulo, a soma dos quadrados dos 
+catetos ('a²+b²') é igual ao quadrado da hipotenusa ('c²'). </p>
+
+<p>Se (a,b,c) é um terno pitagórico, (ka,kb,kc) também é 
+um terno pitagórico para todo número natural 'k'. O primeiro terno
+pitagórico é (3,4,5).</p>
+
+<p><a href="./Laboratório 07_files/example.png" target="_blank"><img src="./Laboratório 07_files/example.png" alt="Exemplo" style="max-width:100%;"></a></p>
+
+<p>Neste laboratório, você deve fazer um programa que, dado um número 
+inteiro 'a', liste todos os ternos pitagóricos (a,b,c), tais
+que 'c &lt;= 1000'.</p>
+
+<h2>
+<a id="user-content-objetivo" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/07/enunciado.html#objetivo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Objetivo</h2>
+
+<p>O objetivo deste laboratório é exercitar conceitos de laços encaixados 
+através da criação de um programa que liste ternos pitagóricos.  </p>
+
+<h2>
+<a id="user-content-entrada" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/07/enunciado.html#entrada" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Entrada</h2>
+
+<p>O programa recebe como entrada um inteiro 'a'. </p>
+
+<p><em><strong>Dica para a linguagem C</strong></em> </p>
+
+<p>Leia a entrada da seguinte forma:</p>
+
+<div class="highlight highlight-source-c"><pre><span class="pl-en">scanf</span>(<span class="pl-s"><span class="pl-pds">"</span><span class="pl-c1">%d</span><span class="pl-pds">"</span></span>, &amp;a);</pre></div>
+
+<h2>
+<a id="user-content-saída" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/07/enunciado.html#sa%C3%ADda" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Saída</h2>
+
+<p>O programa deve imprimir todos os ternos pitagóricos (a,b,c) para o dado 'a' 
+e tais que 'c &lt;= 1000'. Os ternos devem ser listados em ordem crescente do valor 
+de 'c' e cada terno pitagórico deve ser impresso em uma linha 
+seguido por '\n'. Caso não exista terno pitagórico 
+para um dado 'a', com 'c &lt;= 1000', o programa deve imprimir <code>-</code>.</p>
+
+<p><em><strong>Dicas para a linguagem C</strong></em> </p>
+
+<p>Imprima cada terno pitagórico da seguinte forma:</p>
+
+<div class="highlight highlight-source-c"><pre><span class="pl-en">printf</span>(<span class="pl-s"><span class="pl-pds">"</span>(<span class="pl-c1">%d</span>, <span class="pl-c1">%d</span>, <span class="pl-c1">%d</span>)<span class="pl-cce">\n</span><span class="pl-pds">"</span></span>, a, b, c);</pre></div>
+
+<p>Se nenhum terno pitagórico for encontrado, imprima a saída da seguinte forma:</p>
+
+<div class="highlight highlight-source-c"><pre><span class="pl-en">printf</span>(<span class="pl-s"><span class="pl-pds">"</span>-<span class="pl-cce">\n</span><span class="pl-pds">"</span></span>);</pre></div>
+
+<h2>
+<a id="user-content-exemplos" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/07/enunciado.html#exemplos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Exemplos</h2>
+
+<h6>
+<a id="user-content-teste-03" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/07/enunciado.html#teste-03" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Teste 03</h6>
+
+<ul>
+<li>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102qrst/07/dados/arq03.in">Entrada</a></p>
+
+<pre><code>5
+</code></pre>
+</li>
+<li>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102qrst/07/dados/arq03.res">Saída</a></p>
+
+<pre><code>(5, 12, 13)
+</code></pre>
+</li>
+</ul>
+
+<h6>
+<a id="user-content-teste-10" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/07/enunciado.html#teste-10" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Teste 10</h6>
+
+<ul>
+<li>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102qrst/07/dados/arq10.in">Entrada</a></p>
+
+<pre><code>100
+</code></pre>
+</li>
+<li>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102qrst/07/dados/arq10.res">Saída</a></p>
+
+<pre><code>(100, 75, 125)
+(100, 105, 145)
+(100, 240, 260)
+(100, 495, 505)
+(100, 621, 629)
+</code></pre>
+</li>
+</ul>
+
+<h6>
+<a id="user-content-teste-12" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/07/enunciado.html#teste-12" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Teste 12</h6>
+
+<ul>
+<li>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102qrst/07/dados/arq12.in">Entrada</a></p>
+
+<pre><code>139
+</code></pre>
+</li>
+<li>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102qrst/07/dados/arq12.res">Saída</a></p>
+
+<pre><code>-
+</code></pre>
+</li>
+</ul>
+
+<p>Para mais exemplos, consulte os
+<a href="https://susy.ic.unicamp.br:9999/mc102qrst/07/dados/testes.html">testes abertos no SuSy</a>.</p>
+
+<h2>
+<a id="user-content-observações" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/07/enunciado.html#observa%C3%A7%C3%B5es" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Observações</h2>
+
+<ul>
+<li>O número máximo de submissões é <strong>10</strong>;</li><li>O seu programa deve estar completamente contido em um único arquivo denominado <code>lab07.c</code>;</li><li>Para a realização dos testes do SuSy, a compilação dos programas desenvolvidos em C irá considerar o comando:<br>
+<code>gcc -std=c99 -pedantic -Wall -o lab07 lab07.c</code>;</li><li>Você deve incluir, no início do seu programa, uma breve descrição dos objetivos do programa, da entrada e da saída, além do seu nome e do seu RA;</li>
+<li>Indente corretamente o seu código e inclua comentários no decorrer do seu programa.</li>
+</ul>
+
+<h2>
+<a id="user-content-critérios-importantes" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/07/enunciado.html#crit%C3%A9rios-importantes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Critérios importantes</h2>
+
+<p>Independentemente dos resultados dos testes do SuSy, o não cumprimento dos critérios abaixo implicará em nota zero nesta tarefa de laboratório.</p>
+
+<ul>
+<li>Para os programas em linguagem C, o único header aceito para essa tarefa é o <code>stdio.h</code>.</li>
+</ul>
+
+    </article>
+
+
+</body></html>
