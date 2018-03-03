@@ -1,0 +1,4 @@
+DEFEiToS bOSSa CoNTEStACAO tIbEtANO TIBETAno iOGA eScovadela EsCOvaDEla AstROLoGiCo esCoVAdela InTocAdo OciDENTaliZar EsCOVaDElA RELacIOnAdo LasEr MErItoRiO eXPECtoRAcAo
+DEFEiToS bOSSa CoNTEStACAO iOGA eScovadela EsCOvaDEla AstROLoGiCo esCoVAdela InTocAdo OciDENTaliZar EsCOVaDElA RELacIOnAdo LasEr MErItoRiO eXPECtoRAcAo
+DEFEiToS bOSSa CoNTEStACAO eScovadela EsCOvaDEla AstROLoGiCo esCoVAdela InTocAdo OciDENTaliZar EsCOVaDElA RELacIOnAdo LasEr MErItoRiO eXPECtoRAcAo
+DEFEiToS bOSSa CoNTEStACAO AstROLoGiCo InTocAdo OciDENTaliZar RELacIOnAdo LasEr MErItoRiO eXPECtoRAcAo
