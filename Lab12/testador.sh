@@ -1,12 +1,4 @@
 #!/bin/bash
-###########################################################
-# Created: 16/03/2013
-#
-# Author: Carla Negri Lintzmayer (carlanl@ic.unicamp.br)
-#
-# Revision: Zanoni Dias (21/03/2015)
-# Revision: Carla Negri (14/03/2016)
-###########################################################
 
 # Colors
 ESC_SEQ="\x1b["
