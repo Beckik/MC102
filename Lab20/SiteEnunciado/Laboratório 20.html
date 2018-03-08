@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<!-- saved from url=(0059)https://susy.ic.unicamp.br:9999/mc102qrst/20/enunciado.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Laboratório 20</title>        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="./Laboratório 20_files/css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="./Laboratório 20_files/github-markdown.css">
+    <style>
+        .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+        font-family: 'Noto Sans', sans-serif;
+        }
+        .markdown-body h6 { margin-bottom: 0; }
+        .markdown-body h6 + ul li {
+        display: inline-block;
+        width: 100%;
+        max-width: 426px;
+        vertical-align: top;
+        }
+        .markdown-body h6 + ul li pre {
+          max-height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <article class="markdown-body">
+<h3>
+<a id="user-content-instituto-de-computação---unicamp" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/20/enunciado.html#instituto-de-computa%C3%A7%C3%A3o---unicamp" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Instituto de Computação - Unicamp</h3>
+<h3>
+<a id="user-content-mc102---algoritmos-e-programação-de-computadores" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/20/enunciado.html#mc102---algoritmos-e-programa%C3%A7%C3%A3o-de-computadores" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MC102 - Algoritmos e Programação de Computadores</h3>
+<h1>
+<a id="user-content-laboratório-id---title" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/20/enunciado.html#laborat%C3%B3rio-id---title" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Laboratório 20 - A hora do Contra-Ataque!</h1><p>Prazo de entrega: <strong>30/06/2017 23:59:59</strong></p><p>Peso: <strong>2</strong></p>
+<p><em>Professor:</em> Eduardo C. Xavier<br>
+<em>Professor:</em> Guido Araújo</p>
+<p><em>Monitor:</em> Arthur Pratti Dadalto<br>
+<em>Monitor:</em> Cristina Cavalcante<br>
+<em>Monitor:</em> Klairton de Lima Brito<br>
+<em>Monitor:</em> Luís Felipe Mattos<br>
+<em>Monitor:</em> Paulo Finardi<br>
+<em>Monitor:</em> Paulo Lucas Rodrigues Lacerda<br>
+<em>Monitor:</em> Pedro Alves<br>
+<em>Monitor:</em> Renan Vilas Novas<br>
+<em>Monitor:</em> Vinicius de Novaes Guimarães Pereira</p>
+<hr>
+<h2>
+<a id="user-content-descrição" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/20/enunciado.html#descri%C3%A7%C3%A3o" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Descrição</h2>
+<p>Alerta de transmissão:<br>
+"Saudações agente. Mais uma vez seus serviços são necessários.
+Estamos preparando um novo ataque sobre as bases do império no planeta XI35-ALPHA.
+O planeta XI35-ALPHA foi dividido em setores, e para cada setor criamos o seu respectivo mapa.
+Para otimizar o uso de nossas tropas, somente setores que apresentarem mais bases do império do que bases da aliança rebelde que receberão tropas auxiliares. A partir do mapa de cada setor você deve determinar qual deles irá receber tropas auxiliares. Como o planeta apresenta uma quantidade gigantesca de setores, precisamos que isso seja feito da maneira mais rápida possível. Os dados da missão estão no arquivo criptografado que você acabou de receber.<br>
+Que a força esteja com você!"</p>
+<h2>
+<a id="user-content-objetivo" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/20/enunciado.html#objetivo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Objetivo</h2>
+<p>Como engenheiro de software da aliança rebelde, você deve criar um programa que, dado um mapa de um setor seja capaz de determinar quantas bases do império e quantas bases rebeldes estão presentes naquela região.<br>
+Dica:<br>
+<em>A melhor forma de contar pode ser destruindo.</em></p>
+<h2>
+<a id="user-content-entrada" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/20/enunciado.html#entrada" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Entrada</h2>
+<p>A entrada consiste de dois números inteiros que representam respectivamente o número de linhas e colunas de uma matriz de caracteres, o número máximo de linhas e colunas será <strong>100</strong>. Em seguida, é dada a matriz de caracteres com a quantidade de linhas e colunas estabelecidas previamente. Na matriz, o caractere '*' representa parte de uma base do império, o caractere '#' representa parte de uma base dos rebeldes e o caractere '-' representa uma área não construída.</p>
+<p>Além disso, as bases não possuem uma forma geométrica definida.
+Duas bases  de um mesmo grupo (império ou aliança) não podem estar encostadas uma na outro, i.e., não há duas posições vizinhas que pertençam a duas bases diferentes do império (ou da aliança). Dada uma posição <code>(l,c)</code> do mapa, definimos como sendo suas posições <strong>vizinhas</strong> aquelas que estão imediatamente acima <code>(l-1,c)</code>, abaixo <code>(l+1,c)</code>, à esquerda <code>(l,c-1)</code>,  à direita <code>(l,c+1)</code>, nas diagonais
+superiores <code>(l-1,c-1)</code> e <code>(l-1,c+1)</code>, e nas diagonais inferiores <code>(l+1,c-1)</code> e <code>(l+1,c+1)</code>.
+Uma base é determinada pelo conjunto de caracteres <code>#</code> (ou <code>*</code>) que são alcançáveis entre si.
+Dizemos que uma posição (l₀,c₀) é alcançável por uma posição (lᵢ,cᵢ) se existe um caminho entre (l₀,c₀) e (lᵢ,cᵢ) formada pelas posições (l₀,c₀), (l₁,c₁),(l₂,c₂), ..., (lᵢ,cᵢ) (todas contendo o caractere <code>#</code>), tal que todo par de posições ((lₓ₋₁,cₓ₋₁),(lₓ,cₓ)), para 1 ≤ x ≤ i, são vizinhas.</p>
+<p>Veja o exemplo de entrada abaixo.</p>
+<pre><code>5 5
+- - # - -  
+- # # - - 
+# - - * *
+- - * - -  
+- * - - -   
+</code></pre>
+<p>No exemplo acima, temos uma base do império e uma base rebelde.<br>
+<em>Dica para a linguagem C:</em> leia a entrada da seguinte forma:</p>
+<div class="highlight highlight-source-c"><pre><span class="pl-k">for</span>(i = <span class="pl-c1">0</span>; i &lt; rows; i++)
+  <span class="pl-k">for</span>(j = <span class="pl-c1">0</span>; j &lt; cols; j++)
+    <span class="pl-en">scanf</span>(<span class="pl-s"><span class="pl-pds">"</span><span class="pl-c1">%c</span> <span class="pl-pds">"</span></span>, &amp;map[i][j]);</pre></div>
+<h2>
+<a id="user-content-saída" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/20/enunciado.html#sa%C3%ADda" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Saída</h2>
+<p>A saída é composta de duas linhas, a primeira deve informar a quantidade de bases rebeldes e a segunda deve indormar a quantidade de bases do império.
+<em>Dica para a linguagem C:</em> imprima a saída da seguinte forma:</p>
+<div class="highlight highlight-source-c"><pre><span class="pl-en">printf</span>(<span class="pl-s"><span class="pl-pds">"</span>Bases rebeldes: <span class="pl-c1">%d</span><span class="pl-cce">\n</span><span class="pl-pds">"</span></span>, rebels);
+<span class="pl-en">printf</span>(<span class="pl-s"><span class="pl-pds">"</span>Bases do imperio: <span class="pl-c1">%d</span><span class="pl-cce">\n</span><span class="pl-pds">"</span></span>, empire);</pre></div>
+<h2>
+<a id="user-content-exemplos" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/20/enunciado.html#exemplos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Exemplos</h2>
+<h3>
+<a id="user-content-teste-01" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/20/enunciado.html#teste-01" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Teste 01</h3>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102qrst/20/dados/arq01.in">Entrada</a></p>
+<pre><code>10 10
+- - - - - * - * * - 
+* - * * - - * * * - 
+* * * * * * * * * - 
+- * - - * # - - - * 
+# * * - * - * - - * 
+- - - - * * - * - - 
+- * * * * - - * * - 
+- - - * - - * - * * 
+* - - - * - - * * * 
+* * * - - - - * * - 
+</code></pre>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102qrst/20/dados/arq01.res">Saída</a></p>
+<pre><code>Bases rebeldes: 2
+Bases do imperio: 2
+</code></pre>
+<h3>
+<a id="user-content-teste-04" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/20/enunciado.html#teste-04" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Teste 04</h3>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102qrst/20/dados/arq04.in">Entrada</a></p>
+<pre><code>21 23
+* - - - * * - # - - * * - * * * - - - * - - - 
+- * * * - * * * * * * * - - - * * - - - * * - 
+- # * - * - * - * - # * - - * * * * * - * * - 
+* * * # - * - - * * * * - - - - * # - - * * # 
+* * * - * - - - * * - - # * - - - # # * - - - 
+* # * * * - * - * * - - * - - * - * * - - - * 
+* * * - # * * - * - - * * - - - * * # - * * - 
+* * * # - * - * * * - - * - * - * * * - * - - 
+# * - # - - - - * * * - - * - # - - * * * * * 
+* - - - * - * - - - - * * * * * * - * - * # - 
+* * - * * - - * - - - - - # - - * - * - # - * 
+- - - - * - - * * - - * * * * - * * # * * - - 
+- - - - - * - - * * * * - * - * * * * - - * # 
+* - * * - * * * - - * - * - - * - - * - * - * 
+* - * - - * * - - * - * * * - - - * * * - - * 
+- * * * - - - * * * - - - - - - * - - - * - * 
+* * * * * - * - * * * * * - * - - - - - - * # 
+* # - * - * * * - * * * - * - * * - * # - - - 
+- - * # - * * * * - * - # - - * * - - - - - - 
+- * * * * - * - * - - * # * - - * - * - * - * 
+- * * * * - - - * - - - - * - - - - * * - - - 
+</code></pre>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102qrst/20/dados/arq04.res">Saída</a></p>
+<pre><code>Bases rebeldes: 21
+Bases do imperio: 7
+</code></pre>
+<h3>
+<a id="user-content-teste-12" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/20/enunciado.html#teste-12" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Teste 12</h3>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102qrst/20/dados/arq12.in">Entrada</a></p>
+<pre><code>45 45
+- # # - # - * # # # - * * # # - - # # * # * * # # * - # # # * # # * * # * # - - # * * - # 
+* # # * * - * - * # # * # # - # # # * - * * - * # # - * * # - # - # * * # * * * # * * * * 
+- - - # - * * - * - * - # # # - # * # - # # # # * * * * - * * # - * # # # * * - * # - * # 
+* # # # # - - # - # # * * # * - # # - - # # - * * - - * * - - * # - * * - - # * * * * * * 
+- * - - * - * - # # * # - * - * - # # * * * - # # * # * - # * * - * # # * - # - - # - # - 
+- # # * * - - - # # * - * * * # # - * # * - * # * * - * * * * # - * # * # # # * * # # * * 
+# - * # - * - * # * - # * # - * # - # - # * * * - * * # * # # - # # # - * # * # # * * # # 
+- # # * * - - * * * * # * * # - # # * * - - - * * * # # * # * # * - * # - # - # * * - - * 
+# # * * - - * * # # * - # # * - # - # # * * * - * # * - - # # * * * - * * # # # # # # # # 
+# # # - * # - # # # - * - * - # - * * # # # # - # - - * - - * - # # # # * * - # - # * # * 
+# # - - * - * # # # - # # - # * * - # # # * - # - * # - # # * - # # * # - # * - # # # - * 
+- # # * - - # # * - * * # # - # # # # * * # * - - # - - # # * # * - # - - # # # * # # * * 
+# - # - * * - * # # # * # * * * * # # * * # # # # # # # * # * # - # # * # * - - * # # # # 
+* * - - # # # # # # * * # # - * # - * - - * # # # # * - * * # # * * * * * # * # # * # - - 
+# - * * # * # # # # * # - * * # - # # * - # - # # # * * # # * * * # # * # # # - - - * * # 
+# # * # # - * * * - * # * # - # # # # # - * - * * - - * - - * - # * * * # * # # # # # - # 
+* * - * - # # # # - # * # * # - * * # # # * # * * - # * # * * * # * * # # # * * # # # - - 
+# - # # * # * - # * - # # # * # # # - # # # # # - * * - # * * * - # * # # * * # # - * * - 
+# * - - # # - # - # # - # * * # * # # - - # # - - # # # # # * # # # * - # # # * * - - # # 
+# # # * # # * - * - # * - * - # # - # * # - - # # * # # # * - * # # - * - # * # # # # # - 
+# # * * # # # # # # # # # # - * # # * * # # # # # - # - * * # - * # # # # - # - - * # # * 
+# # # # # * # - - * # - # - # * * * * # * - * - # - * # - - * # - - # # # * * # # # * # * 
+# # * # - - # * # * * * # * * - - # * # - - * # - * * # * * * # # # * - # # # # - # * # * 
+- - # * # # # # # # * * # - # * # # * # - - # * * * * - # - - # * # # # * - - # # - # # - 
+# * * # # * - * # * - - # * * - # * * * # * * - - # # # # * * # * # * # # # * * # * # * * 
+- # # # - # * # # # * * * * * # - * * - * * * * * * # # * * # # - # * * - - # - # * # # # 
+* # # * * * # - * # # # * * * - * * - * - # # - * * * # - # * * * - # * * # * # # * # * # 
+# - * * * * * - - * - * - - # * - - # - # * # - # * # - - * # # - - - # # * # # * # * * # 
+* # * * # - * * # # # - # - # # # # # # - # - # * * * # # * * # # * # # # * * * # - # - - 
+# * * # * # # # * * * # * # * - * - # # # - # # # # - # # - * * # # # * * - # - - # # - * 
+- # * # # # * * - # - - * # * - * * # # # * - * - * # - * - # # * # # # # * * # - - - - # 
+# - * * # # - # # # * * - # # # - * # # * # # * - # - # # - * * * * - - # # - * # # - - # 
+# # - # # # * * * - # * * # * # # # - # - * - * - # - # * * - * * * * # # # * # # - * - * 
+# - * - # - # * # - # * # # # * * - - # * - * # # - # - # # * - * - # # # # # * # # * * - 
+* # * # * - * * # * - # * * - # # # * * # - * # * # # - # - * # * * # # * # * # # # * - * 
+# * - * # - * - # # # # - - # * * - * - # * # * - * # # - # - - * # * # * * * * * * * - # 
+# # - * # * # # # * - - # # # # - * * * # # # # # - # # # - # # # - # * # * * # # # * # # 
+- # # * # # - * * - * # - - # # * - # - # # # * # - # # # # # # # * * # # - # * # # - * - 
+# * * - - # # * # - # * - # - * * # # - # - # # # * - - * # # * # - * # # # - # - * * - * 
+# - - # # # * * * - * * # # * # # * # * * # - * - # - - * - * * * # # * # - * # # - # # # 
+* * # - * - * - # - # - * * * - # # # * * * # # * * * # # # * - # * * - # - - * * # # * * 
+# * * - - * * * - # * # # * * # # - # * # # # - # - * # * # # # # * * * * # # # # # * * - 
+* * * # * # # # - # - * * - - * # * * # # - # # # - * # * # # # * * # * # - * # # * # # # 
+* # # - # * * # * # * # # * - - # * * - * # * # # - # * # - - # # # * # * # * # * # * # - 
+# # # * - # # # # # * - * - * * # # # * # # * * * * - # * # - # - - - - - # # # # # # # # 
+</code></pre>
+<p><a href="https://susy.ic.unicamp.br:9999/mc102qrst/20/dados/arq12.res">Saída</a></p>
+<pre><code>Bases rebeldes: 30
+Bases do imperio: 81
+</code></pre>
+<p>Para mais exemplos, consulte os
+<a href="https://susy.ic.unicamp.br:9999/mc102qrst/20/dados/testes.html">testes abertos no Susy</a>.</p>
+<h2>
+<a id="user-content-observações" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/20/enunciado.html#observa%C3%A7%C3%B5es" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Observações</h2>
+<ul>
+<li>O número máximo de submissões é <strong>15</strong>;</li><li>O seu programa deve estar completamente contido em um único arquivo denominado <code>lab20.c</code>.</li><li>Para a realização dos testes do SuSy, a compilação dos programas desenvolvidos em C irá considerar o comando:<br>
+<code>gcc -std=c99 -pedantic -Wall -o lab20 lab20.c</code>;</li><li>Você deve incluir, no início do seu programa, uma breve descrição dos objetivos do programa, da entrada e da saída, além do seu nome e do seu RA;</li>
+<li>Indente corretamente o seu código e inclua comentários no decorrer do seu programa.</li>
+</ul>
+<h2>
+<a id="user-content-critérios-importantes" class="anchor" href="https://susy.ic.unicamp.br:9999/mc102qrst/20/enunciado.html#crit%C3%A9rios-importantes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Critérios importantes</h2>
+<p>Independentemente dos resultados dos testes do SuSy, o não cumprimento dos critérios abaixo implicará em nota zero nesta tarefa de laboratório.</p>
+<ul>
+<li>Para os programas em linguagem C, os únicos headers aceitos para essa tarefa são o <code>stdio.h</code> e <code>stdlib.h</code>.</li>
+</ul>
+
+    </article>
+
+
+</body></html>
